@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emoji Browser - 精美的表情包查询下载工具</title>
+    <link rel="icon" href="./SVG/exploding_head_color.svg">
     <style>
         * {
             margin: 0;
@@ -380,7 +381,9 @@
     <div class="modal" id="emojiModal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeModal()">&times;</span>
-            <div class="modal-emoji" id="modalEmoji"></div>
+            <div class="modal-emoji" id="modalEmoji">
+                <img src="" alt="" style="width: 50%;">
+            </div>
             <h3 id="modalName"></h3>
             <p id="modalGroup"></p>
             <p id="modalKeywords"></p>
@@ -568,7 +571,7 @@
             currentEmoji = emojiData.find(emoji => emoji.name === emojiName);
             if (!currentEmoji) return;
             
-            document.getElementById('modalEmoji').textContent = currentEmoji.glyph || '📦';
+            document.getElementById('modalEmoji').querySelector('img').src = `/SVG/${emojiName}`;
             document.getElementById('modalName').textContent = currentEmoji.cldr;
             document.getElementById('modalGroup').textContent = `分类：${currentEmoji.group}`;
             document.getElementById('modalKeywords').textContent = `关键词：${currentEmoji.keywords ? currentEmoji.keywords.join(', ') : '无'}`;
